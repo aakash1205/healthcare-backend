@@ -1,7 +1,4 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
-name: Build and deploy Node.js app to Azure Web App - health-care
+name: Build and deploy Node.js app to Azure Web App - healthcare
 
 on:
   push:
@@ -28,7 +25,7 @@ jobs:
           npm run test --if-present
 
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+        run: zip -r release.zip .
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -43,7 +40,7 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
-      id-token: write #This is required for requesting the JWT
+      id-token: write
 
     steps:
       - name: Download artifact from build job
@@ -61,11 +58,9 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_81F396363DED4515A20CEF14569335D6 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_9ABD567B87FE461F9A4D316B442663F3 }}
 
-      - name: 'Deploy to Azure Web App'
+      - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'healthcare'
-          slot-name: 'Production'
-          package: .
-          
+          app-name: 'healthcare'  # Ensure this matches your App Service name
+          package: .  # Ensure this path is correct
