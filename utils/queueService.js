@@ -2,7 +2,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const { QueueServiceClient } = require("@azure/storage-queue");
-const connectionString = process.env.AZURE_STORAGE_CONNECTION_STRING || "DefaultEndpointsProtocol=https;AccountName=cdmprojectstorage;AccountKey=cF23PFLNxhauYwTusOuVzKcjBAXLgi3qF1ON4siguJfjCU4SOgiA4dYxm9DnDS30l759EjlP6BH++ASt+2ZRmQ==;EndpointSuffix=core.windows.net";
+const connectionString = process.env.AZURE_STORAGE_CONNECTION_STRING ;
 
 if (!connectionString) {
   throw new Error('Azure Storage connection string is not defined');
