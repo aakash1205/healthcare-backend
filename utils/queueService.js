@@ -1,3 +1,6 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
 const { QueueServiceClient } = require("@azure/storage-queue");
 const connectionString = process.env.AZURE_STORAGE_CONNECTION_STRING;
 
