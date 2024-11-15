@@ -65,7 +65,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'health-care'
+          app-name: 'healthcare'
           slot-name: 'Production'
           package: .
           
